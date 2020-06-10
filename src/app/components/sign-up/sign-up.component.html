@@ -1,1 +1,30 @@
-<p>sign-up works!</p>
+
+<div class= 'body'>
+    <h2 class='text-center'> Sign Up </h2>
+</div>
+<form #form='ngForm' (ngSubmit)='signup(form)'>
+    <input class='form-control' ngModel name='name' #name='ngModel' type='text' placeholder="name" required> <br>
+        <div class='alert alert-danger' *ngIf='name.invalid && name.touched'> Name is required</div>
+
+    <input class='form-control' ngModel name='email' #email='ngModel' type='text' placeholder="email" required> <br>
+        <div class='alert alert-danger' *ngIf="email.errors?.required && email.touched"> email is required</div>
+        <div class='alert alert-danger' *ngIf='email.errors?.email && email.touched'> email format is incorrect</div>
+
+    <input class='form-control' ngModel name='password' #password='ngModel' type='password' 
+            placeholder="password (min. 6 characters)" minlength='6' required> <br>
+        <div class='alert alert-danger' *ngIf='password.errors?.required && password.touched'> password is required</div>
+        <div class='alert alert-danger' *ngIf='password.errors?.minlength && password.touched'> 
+                password should be minimum 6 characters long</div>
+
+    <input class='form-control' ngModel name='confirmpassword' #confirmpassword='ngModel' type='password' 
+            placeholder=" confirm password" required> <br>
+        <div class='alert alert-danger' *ngIf='confirmpassword.errors?.required && confirmpassword.touched'> 
+                password needs to be confirmed </div>
+        <div class='alert alert-danger' *ngIf='confirmpassword.value != password.value && confirmpassword.touched'> 
+                password and confirm password are not identical </div>
+
+    <input class='form-control' ngModel name='address' #address='ngModel' type='text' placeholder="address" required> <br>
+        <div class='alert alert-danger' *ngIf='address.invalid && address.touched'> Address is required</div>
+
+    <button type='submit' class='btn btn-primary' [disabled] = 'form.invalid'> Create Account </button>
+</form>
