@@ -19,7 +19,9 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
 
 // Firebase Module
 import { AngularFireModule } from '@angular/fire' ;
-import { AngularFirestore } from '@angular/fire/firestore';
+import { AngularFirestore, AngularFirestoreModule } from '@angular/fire/firestore';
+import { AngularFireAuth } from '@angular/fire/auth';
+
 
 @NgModule({
   declarations: [
@@ -49,7 +51,9 @@ import { AngularFirestore } from '@angular/fire/firestore';
       messagingSenderId: "206069195893",
       appId: "1:206069195893:web:dfed610dbc6692301c443c",
       measurementId: "G-1WDEGFYZ0V"
-    })
+    }),
+    AngularFirestoreModule,
+    AngularFireAuth
   ],
   
   providers: [ AngularFirestore],
