@@ -11,4 +11,12 @@ export class AuthService {
   signup (email: string, password: string) {
     return this.afa.createUserWithEmailAndPassword(email, password);
   }
+
+  login(email: string, password: string) {
+    return this.afa.signInWithEmailAndPassword(email, password);
+  }
+
+  logout() {
+    return this.afa.signOut();
+  }
 }
