@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { AuthService } from './../../Services/auth.service';
 import { Component, OnInit } from '@angular/core';
 
@@ -9,10 +10,16 @@ import { Component, OnInit } from '@angular/core';
 export class NavbarComponent implements OnInit {
 
   isOpen = false;
+  isUserLoggedIn = false;
 
-  constructor(private as: AuthService) { }
+  constructor(private as: AuthService, private router: Router) { }
 
   ngOnInit(): void {
+    this.as.user.subscribe( user =>
+      {
+        if(user) this.isUserLoggedIn = true;
+        else this.isUserLoggedIn = false;
+      });
   }
 
   toggleNavBar() {
@@ -20,6 +27,7 @@ export class NavbarComponent implements OnInit {
   }
 
   logout() {
+    this.router.navigateByUrl('/logout')
     this.as.logout();
   }
 
