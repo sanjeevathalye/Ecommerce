@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { AuthService } from './../../Services/auth.service';
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
@@ -9,13 +10,15 @@ import { NgForm } from '@angular/forms';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private as: AuthService) { }
+  constructor(private as: AuthService, private router: Router) { }
 
   ngOnInit(): void {
   }
   login(form: NgForm) {
     this.as.login(form.value.email, form.value.password)
-    .then( data => console.log(data))
+    .then( data => {
+     this.router.navigateByUrl('/')
+    })
     .catch(err => console.log(err));
   }
 }

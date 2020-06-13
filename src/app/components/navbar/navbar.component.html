@@ -9,26 +9,26 @@
           <a class="nav-link" routerLink='/' routerLinkActive= 'Active' > Home <span class="sr-only">(current)</span></a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" routerLink= '/account' routerLinkActive= 'Active' > Account </a>
+          <a class="nav-link" routerLink= '/account' routerLinkActive= 'Active' *ngIf='isUserLoggedIn'> Account </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" routerLink= '/cart'  routerLinkActive= 'Active' > Cart </a>
+          <a class="nav-link" routerLink= '/cart'  routerLinkActive= 'Active' *ngIf='isUserLoggedIn'> Cart </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" routerLink= '/orders' routerLinkActive= 'Active' > Orders </a>
+            <a class="nav-link" routerLink= '/orders' routerLinkActive= 'Active' *ngIf='isUserLoggedIn'> Orders </a>
         </li>
         <li class="nav-item">
            <a class="nav-link" routerLink= '/products' routerLinkActive= 'Active' > Products </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" routerLink= '/login' routerLinkActive= 'Active' > Login </a>
+            <a class="nav-link" routerLink= '/login' routerLinkActive= 'Active' *ngIf='!isUserLoggedIn' > Login </a>
         </li>
         <li class="nav-item">
-           <a class="nav-link" routerLink= '/signup' routerLinkActive= 'Active' > Sign Up </a>
+           <a class="nav-link" routerLink= '/signup' routerLinkActive= 'Active' *ngIf='!isUserLoggedIn' > Sign Up </a>
         </li> 
         <li class="nav-item">
             <!-- <a class="nav-link" routerLink= '/logout'  routerLinkActive= 'Active' > Logout </a> -->
-            <a class="btn btn-danger" routerLinkActive= 'Active' (click)='logout()' > Logout </a>
+            <a class="btn btn-danger" routerLinkActive= 'Active' (click)='logout()' *ngIf='isUserLoggedIn'> Logout </a>
          </li>         
       </ul>
     </div>
