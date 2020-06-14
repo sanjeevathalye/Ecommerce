@@ -11,6 +11,10 @@ export class CartService {
   constructor(private afs: AngularFirestore, private as: AuthService) { }
 
   addToCart(product) {
-    return this.afs.collection('users/${this.as.userId}/cart').add(product);
+    return this.afs.collection(`users/${this.as.userId}/cart`).add(product);
+  }
+
+  getFromCart() {
+    return this.afs.collection(`users/${this.as.userId}/cart`).snapshotChanges();
   }
 }
