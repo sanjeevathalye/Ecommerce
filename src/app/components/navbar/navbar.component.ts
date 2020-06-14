@@ -17,8 +17,14 @@ export class NavbarComponent implements OnInit {
   ngOnInit(): void {
     this.as.user.subscribe( user =>
       {
-        if(user) this.isUserLoggedIn = true;
-        else this.isUserLoggedIn = false;
+        if(user) {
+          this.isUserLoggedIn = true;
+          this.as.userId = user.uid;
+        }
+        else { 
+          this.isUserLoggedIn = false;
+          this.as.userId = '' ;
+        }
       });
   }
 

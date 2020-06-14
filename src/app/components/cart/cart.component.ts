@@ -1,3 +1,4 @@
+import { CartService } from './../../Services/cart.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,9 +8,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CartComponent implements OnInit {
 
-  constructor() { }
+  shoppingCart: Array<any> = [] ;  
+
+  constructor(private cart: CartService) { }
 
   ngOnInit(): void {
+    this.cart.getFromCart().subscribe( c =>
+      {
+        this.shoppingCart = c.map ( x => {
+          return {
+            id: x.payload.doc.id,
+            ...x.payload.doc.data() as {}
+          }
+        });
+        console.log(this.shoppingCart);
+      })
   }
 
 }
