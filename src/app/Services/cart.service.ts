@@ -1,7 +1,6 @@
 import { AuthService } from './auth.service';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { Injectable } from '@angular/core';
-import { Product } from '../Interface/product.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -16,5 +15,9 @@ export class CartService {
 
   getFromCart() {
     return this.afs.collection(`users/${this.as.userId}/cart`).snapshotChanges();
+  }
+
+  removeFromCart(id: string) {
+    return this.afs.doc(`users/${this.as.userId}/cart/${id}`).delete();
   }
 }
