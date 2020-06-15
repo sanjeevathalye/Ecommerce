@@ -25,4 +25,8 @@ export class CartComponent implements OnInit {
       })
   }
 
+  removeFromCart(index: number) {
+    this.cart.removeFromCart(this.shoppingCart[index].id);
+  }
+
 }

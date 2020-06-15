@@ -1,1 +1,35 @@
-<p>cart works!</p>
+<table class='table table-dark table-striped'>
+    <thead>
+        <tr>
+            <th> Product Name </th>
+            <th> Unit Price </th>
+            <th> Product Quantity </th>
+            <th> Subtotal </th>
+            <th> </th>
+            <th> </th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor='let item of shoppingCart; index as i'>
+            <td>
+                {{ item.name }}
+            </td>
+            <td>
+                {{ item.price | currency:"USD": "symbol":"2.2-2" }}
+            </td>
+            <td>
+                <input type='number' placeholder="Quantity (lb)" [(ngModel)]= 'item.quantity' min='0'>
+            </td>
+           
+            <td>
+                {{ (item.price * item.quantity) | currency:"USD": "symbol":"2.2-2" }}
+            </td>
+            <td>
+                <button class='btn btn-sm btn-primary'> Save </button>
+            </td>
+            <td>
+                <button class='btn btn-sm btn-danger' (click)= 'removeFromCart(i)'> Remove </button>
+            </td>
+        </tr>
+    </tbody>
+</table>
