@@ -20,4 +20,8 @@ export class CartService {
   removeFromCart(id: string) {
     return this.afs.doc(`users/${this.as.userId}/cart/${id}`).delete();
   }
+
+  updateItemFromCart(id: string, quantity: number) {
+    return this.afs.doc(`users/${this.as.userId}/cart/${id}`).update({quantity});
+  }
 }

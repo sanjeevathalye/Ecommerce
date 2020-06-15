@@ -25,7 +25,7 @@
                 {{ (item.price * item.quantity) | currency:"USD": "symbol":"2.2-2" }}
             </td>
             <td>
-                <button class='btn btn-sm btn-primary'> Save </button>
+                <button class='btn btn-sm btn-primary' (click)='updateCart(i)'> Update </button>
             </td>
             <td>
                 <button class='btn btn-sm btn-danger' (click)= 'removeFromCart(i)'> Remove </button>
