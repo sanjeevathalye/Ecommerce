@@ -29,4 +29,7 @@ export class CartComponent implements OnInit {
     this.cart.removeFromCart(this.shoppingCart[index].id);
   }
 
+  updateCart(index: number) {
+    this.cart.updateItemFromCart(this.shoppingCart[index].id, this.shoppingCart[index].quantity);
+  }
 }
