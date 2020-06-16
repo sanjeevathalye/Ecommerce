@@ -1,0 +1,55 @@
+<div>
+    <h3 class='text-center'> Add New Product</h3>
+    <form #form='ngForm' (ngSubmit)= 'addNewProduct(form)'>
+        <div class='form-group'>
+            <label> Product Name: </label>
+            <input class='form-control' ngModel name='name' type='text' required >
+        </div>
+    
+        <div class='form-group'>
+            <label> Product Decription: </label>
+            <input class='form-control' ngModel name='description' type='text' >
+        </div>
+
+       <div class='form-group'>
+            <label> Price: </label>
+            <input class='form-control' ngModel name='price' type='number' required >
+       </div>
+    
+       <div class='form-group'>
+            <label> Image: </label>
+            <input class='form-control' ngModel name='image' #image type='file' required >
+        </div>
+
+        <input class='btn btn-primary' value='Add' type='submit' [disabled]='form.invalid' required >
+        
+    </form>
+</div>
+
+<h3 class='text-center'> Product Dashboard</h3> <br>
+<table class='table table-dark table-striped'>
+    <thead>
+        <tr>
+            <th> Product Name </th>
+            <th> Unit Price </th>
+            <th> </th>
+            <th> </th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor='let item of productsArray; index as i'>
+            <td>
+                {{ item.name }}
+            </td>
+            <td>
+                $<input type='number' placeholder="Price ($$)" [(ngModel)]= 'item.price' min='1'>
+            </td>
+            <td>
+                <button class='btn btn-sm btn-primary' (click)='updateProductPrice(i)'> Update </button>
+            </td>
+            <td>
+                <button class='btn btn-sm btn-danger' (click)= 'deleteProduct(i)'> Delete </button>
+            </td>
+        </tr>
+    </tbody>
+</table>

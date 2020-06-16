@@ -11,7 +11,7 @@ import { LoginComponent } from './components/login/login.component';
 import { LogoutComponent } from './components/logout/logout.component';
 import { SignUpComponent } from './components/sign-up/sign-up.component';
 import { CartComponent } from './components/cart/cart.component';
-import { AccountComponent } from './components/account/account.component';
+import { AdminComponent } from './components/admin/admin.component';
 import { ProductsComponent } from './components/products/products.component';
 import { OrdersComponent } from './components/orders/orders.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
@@ -22,6 +22,8 @@ import { AngularFireModule } from '@angular/fire' ;
 import { AngularFirestore, AngularFirestoreModule } from '@angular/fire/firestore';
 // import { AngularFireAuth } from '@angular/fire/auth';
 import { AngularFireAuthModule } from '@angular/fire/auth';
+import { AngularFireStorageModule } from '@angular/fire/storage';
+
 
 
 @NgModule({
@@ -32,11 +34,11 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
     LogoutComponent,
     SignUpComponent,
     CartComponent,
-    AccountComponent,
     ProductsComponent,
     OrdersComponent,
     NavbarComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    AdminComponent
   ],
   imports: [
     BrowserModule,
@@ -55,7 +57,8 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
     }),
     AngularFirestoreModule,
     // AngularFireAuth
-    AngularFireAuthModule
+    AngularFireAuthModule,
+    AngularFireStorageModule
   ],
   
   providers: [ AngularFirestore],

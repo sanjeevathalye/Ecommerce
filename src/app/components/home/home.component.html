@@ -5,7 +5,7 @@
                 <img class="card-img-top" [src]="p.imagePath" alt="Card image cap">
                 <div class="card-body">
                   <h5 class="card-title"> {{ p.name }} </h5>
-                  <p class="card-text"> {{p.price | currency: 'USD': 'symbol': '2.2-2' }} </p>
+                  <p class="card-text"> {{p.price | currency: 'USD': 'symbol': '1.2-2' }} </p>
                   <button class="btn btn-primary" (click)='addToCart(i)' *ngIf='productIndex != i'> Add to Cart </button>
                   <div *ngIf='productIndex == i'>
                     <input type='number' class='form-control' placeholder="Quantity (lb)" #quantity>
