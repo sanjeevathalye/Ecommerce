@@ -1,7 +1,8 @@
+import { AuthService } from './../../Services/auth.service';
 import { CartService } from './../../Services/cart.service';
 import { ProductsService } from '../../Services/products.service';
 import { Component, OnInit } from '@angular/core';
-// import { Product } from 'src/app/Interface/product.interface';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -22,14 +23,19 @@ export class HomeComponent implements OnInit {
   products: Array<any> = [] ;
   productIndex: number = -1;  // index of product added to the cart
 
-  constructor( private ps: ProductsService, private cart: CartService) { }
+  constructor( private ps: ProductsService, private cart: CartService,
+                private as: AuthService, private router: Router)   { }
 
   ngOnInit(): void {
     this.ps.getAllProducts().subscribe(data=> this.products = data);
   }
 
   addToCart(index: number) {
-    this.productIndex = index;
+    // check if the user has logged in
+    if (this.as.userId)
+      this.productIndex = index;
+    else
+      this.router.navigateByUrl('/login');
   }
 
   buy(qty: number) {
