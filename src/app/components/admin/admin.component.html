@@ -1,0 +1,27 @@
+<div>
+    <h3 class='text-center'> Add New Product</h3>
+    <form #form='ngForm' (ngSubmit)= 'addNewProduct(form)'>
+        <div class='form-group'>
+            <label> Product Name: </label>
+            <input class='form-control' ngModel name='name' type='text' required >
+        </div>
+    
+        <div class='form-group'>
+            <label> Product Decription: </label>
+            <input class='form-control' ngModel name='description' type='text' >
+        </div>
+
+       <div class='form-group'>
+            <label> Price: </label>
+            <input class='form-control' ngModel name='price' type='number' required >
+       </div>
+    
+       <div class='form-group'>
+            <label> Image: </label>
+            <input class='form-control' ngModel name='image' #image type='file' required >
+        </div>
+
+        <input class='btn btn-primary' value='Add' type='submit' [disabled]='form.invalid' required >
+        
+    </form>
+</div>
