@@ -26,4 +26,12 @@ export class ProductsService {
   getAllProductsWithId() {
     return this.afs.collection('Products').snapshotChanges();
   }
+
+  deleteProduct(id: string) {
+    return this.afs.doc(`Products/${id}`).delete();
+  }
+
+  updateProduct(id: string, price: number) {
+    return this.afs.doc(`Products/${id}`).update( {price} );
+  }
 }

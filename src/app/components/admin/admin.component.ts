@@ -36,4 +36,12 @@ export class AdminComponent implements OnInit {
     this.ps.addProduct(name, desc, price, picture);
   }
 
+  updateProductPrice(index: number) {
+    this.ps.updateProduct(this.productsArray[index].id, this.productsArray[index].price);
+  }
+
+  deleteProduct(index: number) {
+    this.ps.deleteProduct(this.productsArray[index].id);
+  }
+
 }
